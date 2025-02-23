@@ -120,8 +120,8 @@ img {
 
 .abajo  {
 
-  width: 80%;
-  margin: 0 10%;
+  width: 100%;
+  margin: 0px;
   padding: 0px; 
 
 }
@@ -139,46 +139,24 @@ img {
 
 #experiencia_laboral  {
 
-  width: 100%;
+  width: 80%;
+  padding: 0 10%;
+  margin-left: 10%;
   background-color: black;
   border-radius: 50%;
   aspect-ratio: 1/1;
 
 }
 
-
-/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
-/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
-
-@media screen and (max-width: 865px) {
-  .columna {
-    width: 100%;
-    min-width: 250px;
-  }
-
-  .iresponsive {
-      width: 100%;
-  }
-
-  #educacion, #idiomas  {
-
-    width: 100%
-
-  }
-
-  #c2 {
-
-    min-width: 250px;
-
-  }
-
-}
-
-.listas {
+dl {
 
   color: white;
-  margin: 10%;
-  width: 80%;
+  margin: 12%;
+  margin-bottom: 0px;
+  width: 100%;
+  height: 50%;
+  font-size: 0.95vw;
+  padding: 0 5%;
 
 }
 
@@ -191,5 +169,57 @@ dt {
 dd  {
 
   margin-top: 5px;
+
+}
+
+#lista_grande {
+
+  margin-left: 0px;
+
+}
+
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 867px) {
+  .columna {
+    width: 100%;
+    min-width: 250px;
+  }
+
+  .iresponsive {
+      width: 100%;
+  }
+
+  #educacion, #idiomas, #experiencia_laboral  {
+
+    width: 100%;
+    margin: 0px;
+    min-width: 250px;
+    padding: 0 6px;
+    aspect-ratio: 1/1;
+
+  }
+
+  .fila {
+
+    padding: 0 10px;
+
+  }
+
+  #c2 {
+
+    min-width: 250px;
+
+  }
+
+  #lista_grande {
+
+    padding: 0;
+    margin: 10%;
+    width: 80%;
+    font-size: clamp(4px, 1.2vw, 18px);
+
+  }
 
 }
