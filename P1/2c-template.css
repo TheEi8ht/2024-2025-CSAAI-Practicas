@@ -15,7 +15,7 @@ h1  {
 .columna {
 float: left;
 padding: 10px;
-min-height: 500px;
+
 }
 
 .izquierda {
@@ -107,19 +107,37 @@ img {
 .fila {
 
   width: 100%;
-  height: auto;
-  min-height: 100px;
   padding: 0 10px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  
 
 }
 
-#educacion, #experiencia_laboral {
+.abajo  {
+
+  width: 80%;
+  margin: 0 10%;
+  padding: 0px; 
+
+}
+
+#educacion, #idiomas {
 
   width: 50%;
+  background-color: black;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
 
 }
+
+#experiencia_laboral  {
+
+  width: 100%;
+  background-color: black;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+
+}
+
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
 /* Así conseguimos que el contenido se vea bien en dispositvos móviles */
@@ -133,7 +151,7 @@ img {
       width: 100%;
   }
 
-  #educacion, #experiencia_laboral  {
+  #educacion, #idiomas  {
 
     width: 100%
 
