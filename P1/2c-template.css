@@ -16,20 +16,38 @@ body  	{
   background-color: rgb(252 197 2);
 
 }
+
+a:any-link {
+
+  color: white;
+  font-family: Arial;
+  font-size: 140%;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
   
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 .columna {
-float: left;
-padding: 10px;
+  float: left;
+  padding-top: 10px;
 
 }
 
 .izquierda {
-  width: 40%;
+
+  width: 30%;
+  height: 685.2px;
+
   }
 
 .derecha {
-  width: 60%;
+  width: 70%;
+  height: 685.2px;
+
 }
 
 /* Clear floats despues de las columnas para eliminar la superposición */
@@ -40,12 +58,12 @@ clear: both;
 }
 
 #c1 {
-  background-color:#bbb;
+  background-color: black;
+  border-radius: 25px;
 }
 
 
 #c2 {
-    min-width: 500px;
 }
 
 
@@ -65,34 +83,64 @@ img {
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
 
+#about  {
+
+  width: 80%;
+  height: clamp(10%, calc(695.2px - (0.101 * 100vw) - 492.362px), 20%);
+  background-color: rgb(193 43 45);
+  border: 3px solid rgb(106, 15, 17);
+  padding: 0px;
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 10px;
+
+}
+
+#practicas  {
+
+  width: 80%;
+  height: clamp(10%, calc(695.2px - (0.101 * 100vw) - 492.362px), 20%);
+  background-color: rgb(253 196 2);
+  border: 3px solid rgb(219 157 28);
+  padding: 0px;
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 10px;
+
+}
+
 
 /*Imagen principal del curriculum*/
 
 #princimg {
 
-  width: 100%;
-  height: auto;
+  height: min(50%, 27.5vw);
+  width: auto;
+  aspect-ratio: 1/1;
   border: 2px solid black;
   border-radius: 8%;
   background-color: #ccc;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: auto;
+  float: none;
+  display: flex;
+  padding: 6px;
 
 }
 
 #contacto {
 
   width: 100%;
-  padding: 10%;
-  padding-bottom: 2px;
+  padding: 2px;
   margin-top: 5px;
   margin-bottom: 5px;
+  color: white;
 
 }
 
 .titulos  {
 
   text-align: center;
+  margin: 0;
 
 }
 
@@ -100,6 +148,18 @@ img {
 
   padding: 0 10%;
   width: 100%;
+  color: white;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+#listacontactos li p {
+
+  display: inline;
+  font-size: 13.4px;
+  word-break: break-all;
 
 }
 
@@ -112,25 +172,31 @@ img {
 
 .fila {
 
-  width: 100%;
-  padding: 0 10px;
-  
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding: 0px;
+
+}
+
+.arriba {
+
+  height: 22%;
 
 }
 
 .abajo  {
 
-  width: 100%;
-  margin: 0px;
-  padding: 0px; 
+  height: 65%;
 
 }
 
 #educacion, #idiomas {
 
-  width: 45%;
-  margin-left: 2%;
-  margin-right: 2%;
+  width: 30%;
+  height: auto;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: black;
   border-radius: 50%;
   aspect-ratio: 1/1;
@@ -139,21 +205,31 @@ img {
 
 #experiencia_laboral  {
 
-  width: 80%;
-  padding: 0 10%;
-  margin-left: 10%;
+  width: 48%;
+  padding: 0;
+  margin-left: 26%;
   background-color: black;
   border-radius: 50%;
   aspect-ratio: 1/1;
 
 }
 
+#educacion h2, #idiomas h2, #experiencia_laboral h2  {
+
+  color: white;
+  width: 100%;
+  margin: 0;
+  margin-top: 5%;
+  padding: 0;
+
+}
+
 dl {
 
   color: white;
-  margin: 12%;
+  margin: 8%;
   margin-bottom: 0px;
-  width: 100%;
+  width: 84%;
   height: 50%;
   font-size: 0.95vw;
   padding: 0 5%;
@@ -174,14 +250,17 @@ dd  {
 
 #lista_grande {
 
-  margin-left: 0px;
+  margin: 0;
+  margin-top: 5%;
+  padding: 0 12%;
+  width: 100%;
 
 }
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
 /* Así conseguimos que el contenido se vea bien en dispositvos móviles */
 
-@media screen and (max-width: 867px) {
+@media screen and (max-width: 600px) {
   .columna {
     width: 100%;
     min-width: 250px;
@@ -210,6 +289,12 @@ dd  {
   #c2 {
 
     min-width: 250px;
+
+  }
+
+  dl  {
+
+    font-size: clamp(4px, 1.2vw, 18px);
 
   }
 
