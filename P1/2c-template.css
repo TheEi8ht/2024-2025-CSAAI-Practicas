@@ -104,7 +104,7 @@ img {
   border: 3px solid rgb(219 157 28);
   padding: 0px;
   margin-left: 10%;
-  margin-top: 2%;
+  margin-top: max(calc(15px - 1vw), 10px);
   border-radius: 10px;
 
 }
@@ -181,7 +181,8 @@ img {
 
 .arriba {
 
-  height: 22%;
+  margin-top: clamp(0px, calc(900px - 92vw), 45%);
+  height: min(22%, 10vw);
 
 }
 
@@ -193,6 +194,7 @@ img {
 
 #educacion, #idiomas {
 
+  /*30% ancho*/
   width: 30%;
   height: auto;
   margin-left: 10%;
@@ -217,43 +219,68 @@ img {
 #educacion h2, #idiomas h2, #experiencia_laboral h2  {
 
   color: white;
-  width: 100%;
-  margin: 0;
-  margin-top: 5%;
+  width: 70%;
+  float: none;
+  margin: auto;
+  margin-top: 10%;
   padding: 0;
+  font-size: 110%;
+
+}
+
+#experiencia_laboral h2 {
+
+  margin-top: 8%;
+  font-size: 150%;
 
 }
 
 dl {
 
   color: white;
-  margin: 8%;
+  margin: 6%;
   margin-bottom: 0px;
-  width: 84%;
+  width: 88%;
   height: 50%;
   font-size: 0.95vw;
-  padding: 0 5%;
+  padding: 0;
+  padding-left: 2%;
 
 }
 
 dt {
 
-  margin-top: 10px;
+  margin-top: 0.3vw;
 
 }
 
 dd  {
 
-  margin-top: 5px;
+  margin-top: 0.15vw;
+  margin-left: 3vw;
+
+}
+
+.listas {
+
+  font-size: min(1.3vw, 16px);
 
 }
 
 #lista_grande {
 
-  margin: 0;
-  margin-top: 5%;
-  padding: 0 12%;
-  width: 100%;
+  font-size: 0.8vw;
+  width: 70%;
+  margin-left: 10%;
+  margin-top: 1%;
+  word-break: break-word;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+ul  {
+
+  padding-left: 20%;
 
 }
 
