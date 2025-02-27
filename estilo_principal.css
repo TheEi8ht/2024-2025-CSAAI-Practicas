@@ -1,0 +1,89 @@
+/* Importar fuente llamativa */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(150deg, #000000, #aa0000);
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    width: 90%;
+    animation: glow 3s infinite alternate;
+}
+
+/* Animación de brillo */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(71, 0, 0, 0.5);
+    }
+    to {
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Título */
+.title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ff4d4d;
+    text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8);
+}
+
+/* Contenedor de prácticas */
+.practicas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Tarjetas de práctica */
+.practica {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.practica:hover {
+    transform: translateY(-5px) rotate(-2deg);
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid #ff4d4d;
+}
+
+/* Enlaces */
+.practica a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #ff4d4d;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.practica a:hover {
+    background: black;
+    color: #ff4d4d;
+    transform: scale(1.1);
+}
