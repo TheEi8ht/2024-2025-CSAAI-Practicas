@@ -1,0 +1,30 @@
+/* Ejemplo de hoja de estilo */
+
+/* Estilo para el cuerpo del HTML */
+body {
+    background-color: lightblue;
+  }
+  
+  /* Estilo para las etiquetas de tipo h1 */
+  h1 {
+    color:red;
+  }
+  
+  /* Estilo para los párrafos */
+  p {
+    color: blue;
+  }
+
+  #especial {
+
+    color: red;
+    background-color: black;
+
+  }
+
+  .especial {
+
+    color: palevioletred;
+    background-color: green;
+
+  }
