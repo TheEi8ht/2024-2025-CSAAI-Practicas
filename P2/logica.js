@@ -68,6 +68,11 @@ dificil.onclick = function()    {
     facil.removeAttribute('style');
     normal.removeAttribute('style');
 
+    intentos.obj.style.color = 'rgb(255, 0, 0)';
+    intentos.obj.style.borderColor = 'rgb(255, 0, 0)';
+    display.style.animation = 'parpadeo_ult 0.18s infinite alternate';
+    display.style.borderColor = 'rgb(255, 0, 0)';
+
 };
 
 // Codigo secreto
