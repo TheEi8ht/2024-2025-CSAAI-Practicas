@@ -1,0 +1,131 @@
+* {
+
+    box-sizing: border-box;
+
+}
+
+body    {
+
+    margin: 0;
+    border: 0;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#tabla  {
+
+    flex: 0.5;
+
+}
+
+.filas  {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    background-color: black;
+    height: 10%;
+
+}
+
+
+#codigo div {
+
+    flex: 1 1 24.9%;
+    background-color: rgba(255, 0, 0, 0.15);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+}
+
+.cont   {
+
+    background-color: rgba(95, 95, 95, 0.7);
+    border: 1px solid rgb(0, 255, 0);
+
+}
+
+#cont {
+
+    font-size: 40px;
+
+}
+
+#numeros    {
+
+    margin-top: 2px;
+    flex-wrap: wrap;
+
+}
+
+#numeros div    {
+
+    flex: 1 1 33%;
+    background-color: rgba(255, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    font-size: 25px;
+
+}
+
+#n0 {
+
+    flex: 1 1 99%;
+
+}
+
+#botones div    {
+
+    flex: 1 1 33%;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+
+#start  {
+
+    background-color: rgba(155, 155, 155, 0.35);
+    color: rgb(0, 255, 0);
+
+}
+
+#stop  {
+
+    background-color: rgba(155, 155, 155, 0.35);
+    color: rgb(255, 0, 0);
+
+}
+
+#restart  {
+
+    background-color: rgba(155, 155, 155, 0.35);
+    color: rgb(128, 134, 253);
+
+}
+
+/*Parte para moviles*/
+
+@media screen and (max-width: 700px)    {
+
+    #tabla  {
+
+        flex: 0.8;
+        min-width: 250px;
+    
+    }
+
+}
+
