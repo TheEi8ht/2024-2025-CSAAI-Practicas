@@ -85,6 +85,7 @@ let contra = {
         if (this.aciertos == 4) {
 
             crono.stop();
+            display.style.animation = null;
 
         };
 
