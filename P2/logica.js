@@ -1,19 +1,103 @@
 
-// Poner el display del cronometro
-
-let display = document.getElementById('cont');
-let crono = new Crono(display);
+// Función que rinicia todo
 
 function reset()    {
 
+    console.log('Reseteando')
+
     crono.stop();
     crono.reset();
+
+    display.removeAttribute('style');
 
     intentos.init(10);
     contra.init(4);
     numeros.init();
 
 };
+
+// Codigo secreto
+
+let contra = {
+
+    init: function(n)    {
+
+        console.log('Contraseña (init)');
+
+        // Crear el código secreto
+
+        let codigo = Math.floor(Math.random() * (10 ** n)).toString().padStart(4, '0');
+
+        console.log(codigo);
+        
+        codigo = Array.from(codigo);
+        
+        // Guardar cada digito en una variable
+
+        this.cont = {};
+        this.cont['c0'] = codigo[3];
+        this.cont['c1'] = codigo[2];
+        this.cont['c2'] = codigo[1];
+        this.cont['c3'] = codigo[0];
+
+        this.aciertos = 0;
+
+        // Poner los valores por defecto
+
+        for (key of Object.keys(this.vals)) {
+
+            this.vals[key].innerHTML = '*';
+            this.vals[key].removeAttribute('style');
+
+        };
+
+    },
+
+    vals: {
+
+        'c0': document.getElementById('c0'),
+        'c1': document.getElementById('c1'),
+        'c2': document.getElementById('c2'),
+        'c3': document.getElementById('c3')
+
+    },
+
+    cambiar: function(clave, valor) {
+
+        // Función para hacer cambiar el valor de un asterisco por su número
+
+        this.aciertos ++;
+
+        this.vals[clave].style.animation = 'correcto 0.15s infinite alternate';
+
+        let self = this;
+
+        setTimeout(() => {
+
+            self.vals[clave].style.animation = null;
+
+        }, 1500)
+
+        this.vals[clave].innerHTML = valor;
+        this.vals[clave].style.color = 'rgb(0, 255, 0)';
+        this.cont[clave] = null;
+
+        if (this.aciertos == 4) {
+
+            crono.stop();
+
+        };
+
+    },
+
+};
+
+contra.init(4);
+
+// Poner el display del cronometro
+
+let display = document.getElementById('cont');
+let crono = new Crono(display);
 
 // Coger el número de intentos restantes
 
@@ -25,6 +109,7 @@ let intentos = {
 
         this.restantes = total;
         this.obj.innerHTML = this.msj + this.restantes.toString();
+        this.obj.removeAttribute('style');
 
     },
 
@@ -32,11 +117,51 @@ let intentos = {
 
     msj: 'Intentos restantes: ',
 
+    in_animacion: false,
+
     intento: function() {
 
         this.restantes --;
 
-        if (this.restantes == 0)    {
+        if (this.restantes == 6)    {
+
+            this.obj.style.color = 'rgb(255, 150, 0)';
+            this.obj.style.animation = 'parpadeo 0.16s infinite alternate';
+            display.style.animation = 'parpadeo 0.16s infinite alternate'
+
+            let self = this;
+
+            setTimeout(() => {
+
+                if (!self.in_animacion)    {
+
+                    self.obj.style.animation = null;
+                    display.style.animation = null;
+
+                };
+
+            }, 1000);
+
+        } else if (this.restantes == 3) {
+
+            this.obj.style.color = 'rgb(255, 0, 0)';
+
+            this.obj.style.animation = 'parpadeo_ult 0.18s infinite alternate';
+            display.style.animation = 'parpadeo_ult 0.18s infinite alternate';
+            this.in_animacion = !this.in_animacion;
+
+            let self = this;
+
+            setTimeout(() => {
+
+                this.in_animacion = !this.in_animacion;
+                self.obj.style.animation = null;
+
+            }, 1000);
+
+        };
+        
+        if (contra.aciertos != 4 & this.restantes == 0)   {
 
             alert("Has perdido la partida :(");
 
@@ -68,8 +193,7 @@ init: function()    {
 
         self[i] = document.getElementById('n' + i.toString());
 
-        self[i].style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
-        self[i].style.color = 'white';
+        self[i].removeAttribute('style')
 
         self[i].onclick = function(evt)    {
 
@@ -81,22 +205,12 @@ init: function()    {
             if (clave.includes(num))  {
 
                 const ayu = Object.keys(contra.cont).find(key => contra.cont[key] == num);
-                contra.vals[ayu].innerHTML = num;
-                contra.vals[ayu].style.color = '#00FF00';
-                contra.cont[ayu] = null;
-
-                contra.aciertos ++;
+                contra.cambiar(ayu, num)
 
             } else  {
 
                 evt.target.style.backgroundColor = '#FF9900';
                 evt.target.style.color = 'black';
-
-            };
-
-            if (contra.aciertos == 4) {
-
-                crono.stop();
 
             };
 
@@ -136,44 +250,4 @@ reseteo.onclick = function()    {
 
     reset();
 
-}
-
-// Codigo secreto
-
-let contra = {
-
-    init: function(n)    {
-
-        console.log('contraseña (init)');
-
-        let codigo = Array.from(Math.floor(Math.random() * (10 ** n)).toString().padStart(4, '0'));
-        
-        this.cont = {};
-        this.cont['c0'] = codigo[3];
-        this.cont['c1'] = codigo[2];
-        this.cont['c2'] = codigo[1];
-        this.cont['c3'] = codigo[0];
-
-        this.aciertos = 0;
-
-        for (key of Object.keys(this.vals)) {
-
-            this.vals[key].innerHTML = '*';
-            this.vals[key].style.color = 'white';
-
-        };
-
-    },
-
-    vals: {
-
-        'c0': document.getElementById('c0'),
-        'c1': document.getElementById('c1'),
-        'c2': document.getElementById('c2'),
-        'c3': document.getElementById('c3')
-
-    }
-
 };
-
-contra.init(4);
