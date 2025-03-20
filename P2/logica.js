@@ -10,9 +10,63 @@ function reset()    {
 
     display.removeAttribute('style');
 
-    intentos.init(10);
+    intentos.init(intentos_i);
     contra.init(4);
     numeros.init();
+
+};
+
+// Modos de juego
+
+let restar = true;
+let intentos_i = 10;
+
+// Facil
+
+let facil = document.getElementById('facil');
+
+facil.style.backgroundColor = 'rgba(0, 144, 0, 0.8)';
+
+facil.onclick = function()  {
+
+    restar = false;
+    intentos_i = 10;
+
+    reset();
+
+    facil.style.backgroundColor = 'rgba(0, 144, 0, 0.8)';
+    normal.removeAttribute('style');
+    dificil.removeAttribute('style');
+
+};
+
+let normal = document.getElementById('normal');
+
+normal.onclick = function() {
+
+    restar = true;
+    intentos_i = 10;
+
+    reset();
+
+    normal.style.backgroundColor = 'rgba(155, 106, 0, 0.84)';
+    facil.removeAttribute('style');
+    dificil.removeAttribute('style');
+
+};
+
+let dificil = document.getElementById('dificil');
+
+dificil.onclick = function()    {
+
+    restar = false;
+    intentos_i = 5;
+
+    reset();
+
+    dificil.style.backgroundColor = 'rgba(80, 80, 80, 0.5)';
+    facil.removeAttribute('style');
+    normal.removeAttribute('style');
 
 };
 
@@ -120,9 +174,13 @@ let intentos = {
 
     in_animacion: false,
 
-    intento: function() {
+    intento: function(acierto) {
 
-        this.restantes --;
+        if (!acierto || (acierto & restar)) {
+
+            this.restantes --;
+
+        };
 
         if (this.restantes == 6)    {
 
@@ -179,7 +237,7 @@ let intentos = {
 
 };
 
-intentos.init(10);
+intentos.init(intentos_i);
 
 // let intentos = document.getElementById('num_intentos');
 
@@ -206,10 +264,14 @@ init: function()    {
             const num = evt.target.innerHTML;
             const clave = Object.values(contra.cont);
 
+            let acierto =  false;
+
             if (clave.includes(num))  {
 
                 const ayu = Object.keys(contra.cont).find(key => contra.cont[key] == num);
                 contra.cambiar(ayu, num)
+
+                acierto = true;
 
             } else  {
 
@@ -218,7 +280,7 @@ init: function()    {
 
             };
 
-            intentos.intento();
+            intentos.intento(acierto);
 
         };
 
