@@ -127,8 +127,10 @@ let intentos = {
         if (this.restantes == 6)    {
 
             this.obj.style.color = 'rgb(255, 150, 0)';
+            this.obj.style.borderColor = 'rgb(255, 150, 0)';
             this.obj.style.animation = 'parpadeo 0.16s infinite alternate';
-            display.style.animation = 'parpadeo 0.16s infinite alternate'
+            display.style.animation = 'parpadeo 0.16s infinite alternate';
+            display.style.borderColor = 'rgb(255, 150, 0)';
 
             let self = this;
 
@@ -146,9 +148,10 @@ let intentos = {
         } else if (this.restantes == 3) {
 
             this.obj.style.color = 'rgb(255, 0, 0)';
-
+            this.obj.style.borderColor = 'rgb(255, 0, 0)';
             this.obj.style.animation = 'parpadeo_ult 0.18s infinite alternate';
             display.style.animation = 'parpadeo_ult 0.18s infinite alternate';
+            display.style.borderColor = 'rgb(255, 0, 0)';
             this.in_animacion = !this.in_animacion;
 
             let self = this;
@@ -210,8 +213,8 @@ init: function()    {
 
             } else  {
 
-                evt.target.style.backgroundColor = '#FF9900';
-                evt.target.style.color = 'black';
+                evt.target.style.backgroundColor = 'rgba(74, 108, 217, 0.7)';
+                evt.target.style.color = 'orange';
 
             };
 

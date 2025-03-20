@@ -1,6 +1,7 @@
 * {
 
     box-sizing: border-box;
+    user-select: none;
 
 }
 
@@ -76,13 +77,21 @@ body    {
 #numeros div    {
 
     flex: 1 1 33%;
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(150, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid red;
     font-size: 25px;
+    transition: filter 0.4s ease;
 
+}
+
+#numeros div:hover    {
+
+    filter: brightness(1.5);
+    cursor: pointer;
+    
 }
 
 #n0 {
@@ -98,6 +107,14 @@ body    {
     font-size: 20px;
     padding-top: 1%;
     padding-bottom: 1%;
+    transition: background-color 0.4s ease;
+
+}
+
+#botones div:hover  {
+
+    background-color: rgba(186, 186, 186, 0.5);
+    cursor: pointer;
 
 }
 
