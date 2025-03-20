@@ -25,8 +25,6 @@ let intentos_i = 10;
 
 let facil = document.getElementById('facil');
 
-facil.style.backgroundColor = 'rgba(0, 144, 0, 0.8)';
-
 facil.onclick = function()  {
 
     restar = false;
@@ -41,6 +39,8 @@ facil.onclick = function()  {
 };
 
 let normal = document.getElementById('normal');
+
+normal.style.backgroundColor = 'rgba(155, 106, 0, 0.84)';
 
 normal.onclick = function() {
 
@@ -60,7 +60,7 @@ let dificil = document.getElementById('dificil');
 dificil.onclick = function()    {
 
     restar = false;
-    intentos_i = 5;
+    intentos_i = 3;
 
     reset();
 
