@@ -11,12 +11,33 @@ body    {
     border: 0;
     background-color: black;
     color: white;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-content: center;
+    min-width: 300px;
+    min-height: 100vh;
+
+}
+
+#practicas   {
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    padding: 2px;
+
+    background-color: rgb(255, 217, 0);
+    color: black;
+
+    border: 2px solid red;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-style: normal;
+    font-size: 150%;
 
 }
 
@@ -26,6 +47,7 @@ h1  {
     text-align: center;
     width: 70%;
     min-width: 250px;
+    margin-top: 0;
 
 }
 
@@ -285,6 +307,16 @@ h1  {
         flex: 0;
         width: 90%;
         min-width: 250px;
+    
+    }
+
+    #practicas   {
+
+        flex: 0;
+        text-align: center;
+        position: static;
+        align-self: flex-start;
+        margin-left: 5%;
     
     }
 
