@@ -80,11 +80,11 @@ let contra = {
 
         // Crear el código secreto
 
-        let codigo = Math.floor(Math.random() * (10 ** n)).toString().padStart(4, '0');
+        this.codigo = Math.floor(Math.random() * (10 ** n)).toString().padStart(4, '0');
 
-        console.log(codigo);
+        console.log(this.codigo);
         
-        codigo = Array.from(codigo);
+        codigo = Array.from(this.codigo);
         
         // Guardar cada digito en una variable
 
@@ -234,7 +234,7 @@ let intentos = {
         
         if (contra.aciertos != 4 & this.restantes == 0)   {
 
-            alert("Has perdido la partida :(");
+            alert(`Has perdido la partida :(.\nEl código era: ${contra.codigo}`);
 
             reset();
 
