@@ -3,7 +3,7 @@
 
 function reset()    {
 
-    console.log('Reseteando')
+    console.log('Reseteando');
 
     crono.stop();
     crono.reset();
@@ -14,7 +14,7 @@ function reset()    {
     contra.init(4);
     numeros.init();
 
-};
+}
 
 // Modos de juego
 
@@ -98,12 +98,12 @@ let contra = {
 
         // Poner los valores por defecto
 
-        for (key of Object.keys(this.vals)) {
+        for (let key of Object.keys(this.vals)) {
 
             this.vals[key].innerHTML = '*';
             this.vals[key].removeAttribute('style');
 
-        };
+        }
 
     },
 
@@ -130,7 +130,7 @@ let contra = {
 
             self.vals[clave].style.animation = null;
 
-        }, 1500)
+        }, 1500);
 
         this.vals[clave].innerHTML = valor;
         this.vals[clave].style.color = 'rgb(0, 255, 0)';
@@ -141,7 +141,7 @@ let contra = {
             crono.stop();
             display.style.animation = null;
 
-        };
+        }
 
     },
 
@@ -173,7 +173,7 @@ let intentos = {
             display.style.animation = 'parpadeo_ult 0.18s infinite alternate';
             display.style.borderColor = 'rgb(255, 0, 0)';
 
-        };
+        }
 
     },
 
@@ -189,7 +189,7 @@ let intentos = {
 
             this.restantes --;
 
-        };
+        }
 
         if (this.restantes == 6)    {
 
@@ -208,7 +208,7 @@ let intentos = {
                     self.obj.style.animation = null;
                     display.style.animation = null;
 
-                };
+                }
 
             }, 1000);
 
@@ -230,7 +230,7 @@ let intentos = {
 
             }, 1000);
 
-        };
+        }
         
         if (contra.aciertos != 4 & this.restantes == 0)   {
 
@@ -238,7 +238,7 @@ let intentos = {
 
             reset();
 
-        };
+        }
 
         this.obj.innerHTML = this.msj + this.restantes.toString();
 
@@ -264,7 +264,7 @@ init: function()    {
 
         self[i] = document.getElementById('n' + i.toString());
 
-        self[i].removeAttribute('style')
+        self[i].removeAttribute('style');
 
         self[i].onclick = function(evt)    {
 
@@ -278,7 +278,7 @@ init: function()    {
             if (clave.includes(num))  {
 
                 const ayu = Object.keys(contra.cont).find(key => contra.cont[key] == num);
-                contra.cambiar(ayu, num)
+                contra.cambiar(ayu, num);
 
                 acierto = true;
 
@@ -287,13 +287,13 @@ init: function()    {
                 evt.target.style.backgroundColor = 'rgba(74, 108, 217, 0.7)';
                 evt.target.style.color = 'orange';
 
-            };
+            }
 
             intentos.intento(acierto);
 
         };
 
-    };
+    }
 
 }
 
