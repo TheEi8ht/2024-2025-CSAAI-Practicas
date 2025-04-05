@@ -27,11 +27,13 @@ class Proyectil {
         ctx.strokeStyle = this.color;
 
         ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x, this.y - this.largo);
+        ctx.lineTo(this.x, this.y + this.largo);
 
         ctx.stroke();
 
         ctx.closePath();
+
+        ctx.restore();
 
     }
 

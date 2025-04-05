@@ -43,6 +43,9 @@ let proyectiles = {
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
+const skin_nave = document.getElementById('nave');
+let jugador = new Jugador(skin_nave, 2, 1, proyectiles, canvas);
+
 //-- Función principal de actualización
 function update()   {
 
@@ -50,12 +53,14 @@ function update()   {
 
   //-- 1) Actualizar posición de los elementos
   proyectiles.logica();
+  jugador.logica();
 
   //-- 2) Borrar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //-- 3) Pintar los elementos en el canvas
   proyectiles.mostrar(ctx);
+  jugador.mostrar(ctx);
 
   //-- 4) Repetir
   requestAnimationFrame(update);
@@ -63,18 +68,6 @@ function update()   {
 }
 
 //-- Otras funciones....
-
-
-
-document.addEventListener('keydown', (evt) => {
-
-    if (evt.key === ' ' && !evt.repeat)    {
-
-        proyectiles.lista.push(new Proyectil(Math.random() * 600, 500));
-
-    }
-
-});
 
 //-- ¡Que comience la fiesta! Hay que llamar a update la primera vez
 update();
