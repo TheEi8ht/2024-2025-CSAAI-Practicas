@@ -11,9 +11,27 @@ class Proyectil {
 
     }
 
-    logica()    {
+    colision(enemigos, proyectiles)  {
+
+        for (let enemigo = 0; enemigo < enemigos.length; enemigo ++)   {
+
+            if (this.x >= enemigos[enemigo].x && this.x <= enemigos[enemigo].x + 35 &&
+                this.y + this.largo >= enemigos[enemigo].y && this.y <= enemigos[enemigo].y + 35
+            )    {
+
+                proyectiles.lista = proyectiles.lista.filter(obj => obj !== this);
+                enemigos.splice(enemigo, 1);
+
+            }
+
+        }
+
+    }
+
+    logica(enemigos, proyectiles)    {
 
         this.y -= this.vy
+        this.colision(enemigos, proyectiles);
 
     }
 
