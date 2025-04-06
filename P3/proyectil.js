@@ -20,6 +20,7 @@ class Proyectil {
 
             if (this.x >= enemigos[enemigo].x && this.x <= enemigos[enemigo].x + 35 &&
                 this.y + this.largo >= enemigos[enemigo].y && this.y <= enemigos[enemigo].y + 35
+                && !enemigos[enemigo].eliminado
             )    {
 
                 this.y = -this.largo;
@@ -29,6 +30,8 @@ class Proyectil {
                 sonido_explosion.play();
 
                 partida.puntos += 10;
+
+                jugadores.enemigos_restantes -= 1;
 
             }
 

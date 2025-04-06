@@ -1,7 +1,7 @@
 
 class Enemigo   {
 
-    constructor(x, y, canvas, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
+    constructor(x, y, canvas, vx=10, vy=20, largo=35, ancho=35, color='rgb(0, 255, 0)') {
 
         this.x = x;
         this.y = y;
@@ -19,10 +19,13 @@ class Enemigo   {
 
         let self  = this;
 
-        if (this.y >= this.canvas.height - 85)  {
+        if (this.y >= this.canvas.height - 85 && !this.derrota)  {
 
-            this.canvas.dispatchEvent(new Event('gameover'));
+            partida.derrota = true;
             enemigos.splice(0, enemigos.length);
+
+            sonido_derrota.currentTime = 0;
+            sonido_derrota.play()
 
         }
 

@@ -14,12 +14,14 @@ class Partida   {
 
     }
 
-    nivel() {
+    nivel(filas, columnas) {
 
         boton_niveles.style.display = 'none';
+        this.victoria = false;
 
-        let filas = 3;
-        let columnas = 8;
+        jugadores.enemigos_restantes = filas*columnas;
+        console.log(this.jugadores.enemigos_restantes);
+
         let espaciado = 35 + 120/columnas;
 
         for (let fila = 1; fila <= filas; fila ++)  {
@@ -42,9 +44,11 @@ class Partida   {
         this.proyectiles.logica(this.enemigos.lista);
         explosiones.logica();
 
-        if (this.enemigos.lista.length === 0)   {
+        if (jugadores.enemigos_restantes <= 0 && !this.victoria)   {
 
             this.victoria = true;
+            sonido_win.currentTime = 0;
+            sonido_win.play();
 
         }
     }
@@ -72,8 +76,6 @@ class Partida   {
             ctx.font = "30px Arial";
             ctx.fillStyle = 'rgb(0, 255, 0)'
             ctx.fillText("Enhorabuena, Nivel superado !!!", ctx.canvas.width/2 - 190, ctx.canvas.height/2 - 50);
-
-            this.victoria = false;
 
             for (let proy of proyectiles.lista)   {
 

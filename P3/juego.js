@@ -114,6 +114,8 @@ let jugadores = {
 
     lista: [],
 
+    enemigos_restantes: 0,
+
     logica: function() {
 
         if (this.lista.length > 0)  {
@@ -155,10 +157,13 @@ let ctx = canvas.getContext('2d');
 let boton_niveles = document.getElementById('nivel');
 let sonido_disparo = document.getElementById('disparo');
 let sonido_explosion = document.getElementById('explosion');
+let sonido_win = document.getElementById('win');
+let sonido_derrota = document.getElementById('derrota');
+
 let skin_explosion = document.getElementById('explosion_img');
 
 let partida = new Partida(jugadores, enemigos, proyectiles, canvas);
-partida.nivel(3, 8, canvas);
+partida.nivel(3, 3);
 
 //-- Función principal de actualización
 function update()   {
@@ -179,12 +184,6 @@ function update()   {
 }
 
 //-- Otras funciones....
-
-canvas.addEventListener('gameover', function() {
-
-    partida.derrota = true;
-
-});
 
 //-- ¡Que comience la fiesta! Hay que llamar a update la primera vez
 update();
