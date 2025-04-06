@@ -9,9 +9,12 @@ class Proyectil {
         this.ancho = ancho;
         this.color = color;
 
+        sonido_disparo.currentTime = 0;
+        sonido_disparo.play();
+
     }
 
-    colision(enemigos, proyectiles)  {
+    colision(enemigos)  {
 
         for (let enemigo = 0; enemigo < enemigos.length; enemigo ++)   {
 
@@ -19,8 +22,13 @@ class Proyectil {
                 this.y + this.largo >= enemigos[enemigo].y && this.y <= enemigos[enemigo].y + 35
             )    {
 
-                proyectiles.lista = proyectiles.lista.filter(obj => obj !== this);
-                enemigos.splice(enemigo, 1);
+                this.y = -this.largo;
+                enemigos[enemigo].eliminado = true;
+                explosiones.lista.push(new Explosion(enemigos[enemigo].x, enemigos[enemigo].y));
+                sonido_explosion.currentTime = 0;
+                sonido_explosion.play();
+
+                partida.puntos += 10;
 
             }
 

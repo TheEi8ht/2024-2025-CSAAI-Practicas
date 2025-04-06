@@ -60,8 +60,31 @@ canvas  {
 
 }
 
-img {
+img, video {
 
     display: none;
+
+}
+
+#nivel  {
+
+    width: 300px;
+    height: 90px;
+    margin-top: 10px;
+    text-align: center;
+    background-color: blue;
+    color: red;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid red;
+
+}
+
+#nivel p    {
+
+    margin: 0;
+    font: 20px Arial black;
 
 }

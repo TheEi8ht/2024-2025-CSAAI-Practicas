@@ -1,3 +1,4 @@
+
 class Enemigo   {
 
     constructor(x, y, canvas, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
@@ -10,6 +11,7 @@ class Enemigo   {
         this.ancho = ancho;
         this.color = color;
         this.canvas = canvas;
+        this.eliminado = false;
 
     }
 
@@ -63,6 +65,38 @@ class Enemigo   {
         ctx.drawImage(skin_alien, this.x, this.y);
 
         ctx.restore();
+
+    }
+
+}
+
+
+class Explosion {
+
+    constructor(x, y)   {
+
+        this.x = x;
+        this.y = y;
+        this.frames = 18;
+        this.terminado = false;
+
+    }
+
+    logica()    {
+
+        if (this.frames <= 0)   {
+
+            this.terminado = true;
+
+        }
+
+        this.frames --;
+
+    }
+
+    mostrar()   {
+
+        ctx.drawImage(skin_explosion, this.x, this.y, 35, 35);
 
     }
 

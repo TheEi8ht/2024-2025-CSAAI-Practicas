@@ -52,6 +52,8 @@ let enemigos = {
     
             });
 
+            this.lista = this.lista.filter(enemy => enemy.eliminado != true);
+
         }
         
     },
@@ -71,6 +73,42 @@ let enemigos = {
     }
 
 };
+
+let explosiones = {
+
+    lista: [],
+
+    logica: function()  {
+
+        if (this.lista.length > 0)  {
+            
+            this.lista.forEach(explo => {
+            
+                explo.logica(this.lista);
+
+            });
+
+            this.lista = this.lista.filter(explo => explo.terminado != true);
+
+        }
+
+    },
+
+    mostrar: function() {
+
+        if (this.lista.length > 0)  {
+
+            this.lista.forEach(explo => {
+                
+                explo.mostrar(explo);
+    
+            });
+
+        }
+
+    }
+
+}
 
 let jugadores = {
 
@@ -114,24 +152,29 @@ const skin_alien = document.getElementById('alien');
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
+let boton_niveles = document.getElementById('nivel');
+let sonido_disparo = document.getElementById('disparo');
+let sonido_explosion = document.getElementById('explosion');
+let skin_explosion = document.getElementById('explosion_img');
+
 let partida = new Partida(jugadores, enemigos, proyectiles, canvas);
 partida.nivel(3, 8, canvas);
 
 //-- Función principal de actualización
 function update()   {
 
-        //-- Implementación del algoritmo de animación:
+    //-- Implementación del algoritmo de animación:
 
-        //-- 1) Actualizar posición de los elementos
-        partida.logica();
+    //-- 1) Actualizar posición de los elementos
+    partida.logica();
 
-        //-- 2) Borrar el canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //-- 2) Borrar el canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        //-- 3) Pintar los elementos en el canvas
-        partida.mostrar(ctx);
-        //-- 4) Repetir
-        requestAnimationFrame(update);
+    //-- 3) Pintar los elementos en el canvas
+    partida.mostrar(ctx);
+    //-- 4) Repetir
+    requestAnimationFrame(update);
 
 }
 
