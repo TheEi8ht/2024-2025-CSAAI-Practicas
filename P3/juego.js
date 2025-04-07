@@ -237,6 +237,30 @@ for (let i = 0; i < 3*modo; i ++)  {
     
         });
 
+        boton.addEventListener('touchstart', function(evt)   {
+
+            evt.preventDefault();
+
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+    
+        boton.addEventListener('touchend', function()   {
+    
+            document.dispatchEvent(new KeyboardEvent('keyup', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+
 }
 
 /*let ayu = 1;
