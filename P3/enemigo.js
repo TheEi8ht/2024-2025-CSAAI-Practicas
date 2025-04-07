@@ -1,7 +1,7 @@
 
 class Enemigo   {
 
-    constructor(x, y, canvas, vx=10, vy=20, largo=35, ancho=35, color='rgb(0, 255, 0)') {
+    constructor(x, y, canvas, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
 
         this.x = x;
         this.y = y;
@@ -61,7 +61,7 @@ class Enemigo   {
 
     }
 
-    mostrar(ctx)    {
+    mostrar()    {
 
         ctx.save();
 

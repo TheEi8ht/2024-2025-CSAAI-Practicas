@@ -43,7 +43,20 @@ body    {
 
 }
 
-h1  {
+#juego  {
+
+    width: 650px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+
+}
+
+#juego h1  {
 
     flex: 0;
     text-align: center;
@@ -53,7 +66,7 @@ h1  {
 
 }
 
-canvas  {
+#juego canvas  {
 
     border: 2px solid red;
     border-radius: 8px;
@@ -66,11 +79,111 @@ img, video {
 
 }
 
+#botones    {
+
+    width: 600px;
+    height: 110px;
+
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+#jugadores  {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+
+    width: 100%;
+
+}
+
+.movimientos {
+
+    width: 45%;
+    height: 110px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+
+}
+
+.flechas    {
+
+    width: 95%;
+    height: 35px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    margin-top: 1px;
+    margin-bottom: 3px;
+
+}
+
+.flechas div    {
+
+    width: 49%;
+    height: 35px;
+
+    background-color: rgba(150, 150, 150, 0.18);
+    border: 2px solid red;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.disparos    {
+
+    width: 95%;
+    height: 35px;
+
+    background-color: rgba(150, 150, 150, 0.18);
+    border: 2px solid red;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.disparos p {
+
+    color: red;
+    font-weight: bold;
+
+}
+
+
+.jugador p  {
+
+    margin: 0;
+
+}
+
 #nivel  {
 
     width: 300px;
-    height: 90px;
-    margin-top: 10px;
+    height: 80px;
     text-align: center;
     background-color: blue;
     color: red;
@@ -86,5 +199,40 @@ img, video {
 
     margin: 0;
     font: 20px Arial black;
+
+}
+
+@media screen and (max-width: 700px)    {
+
+    #juego  {
+
+        flex: 0;
+        width: 90%;
+        min-width: 250px;
+    
+    }
+
+    #practicas   {
+
+        flex: 0;
+        text-align: center;
+        position: static;
+        align-self: flex-start;
+        margin-left: 5%;
+    
+    }
+
+    canvas {
+
+        width: 100%;
+        height: 150%;
+
+    }
+
+    #botones    {
+
+        width: 100%;
+
+    }
 
 }

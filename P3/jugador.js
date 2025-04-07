@@ -1,24 +1,24 @@
 
 class Jugador   {
 
-    constructor(skin, vx, vp, proyectiles, canvas)   {
+    constructor(skin, btns, vx, vp, x=0)   {
 
         this.skin = skin;
+        this.botones = botones;
         this.vx = vx;
         this.v_proyectil = vp;
-        this.proyectiles = proyectiles;
-        this.x = canvas.width/2 - 18;
+        this.btns = btns;
+        this.x = x;
         this.y = canvas.height - 55;
-        this.canvas = canvas;
 
         let self  = this;
         self.teclas = {};
 
         document.addEventListener('keydown', (evt) => {
 
-            if (evt.key === ' ' && evt.repeat)  {
+            if ((evt.key === ' ' || evt.key === 'w') && evt.repeat)  {
 
-                delete self.teclas[' ']
+                delete self.teclas[evt.key];
 
             }   else    {
 
@@ -38,21 +38,21 @@ class Jugador   {
 
     logica()    {
 
-        if (this.teclas[' '])    {
+        if (this.teclas[this.btns[2]])    {
                 
-            this.proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, this.v_proyectil));
+            proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, this.v_proyectil));
             
-            delete this.teclas[' '];
+            delete this.teclas[this.btns[2]];
     
         }
         
-        if (this.teclas['ArrowRight']) {
+        if (this.teclas[this.btns[1]]) {
 
             this.x += this.vx;
 
         }
         
-        if (this.teclas['ArrowLeft'])  {
+        if (this.teclas[this.btns[0]])  {
 
             this.x -= this.vx;
 
@@ -62,15 +62,15 @@ class Jugador   {
 
             this.x = 0;
 
-        }   else if (this.x > this.canvas.width - 35)   {
+        }   else if (this.x > canvas.width - 35)   {
 
-            this.x = this.canvas.width - 35;
+            this.x = canvas.width - 35;
 
         }
 
     }
 
-    mostrar(ctx)    {
+    mostrar()    {
 
         ctx.save();
 

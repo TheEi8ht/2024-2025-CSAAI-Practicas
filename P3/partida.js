@@ -1,26 +1,31 @@
 
 class Partida   {
 
-    constructor(jugadores, enemigos, proyectiles)   {
+    constructor()   {
 
-        this.enemigos = enemigos;
-        this.jugadores = jugadores;
-        this.proyectiles = proyectiles;
         this.derrota = false;
         this.victoria = false;
         this.puntos = 0;
+        this.level = 0;
 
-        this.jugadores.lista.push(new Jugador(skin_nave, 2, 1, proyectiles, canvas));
+        for (let i = 0; i <= modo-1; i ++) {
+
+            jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 18));
+
+        }
+        
 
     }
 
     nivel(filas, columnas) {
 
+        this.level ++;
+
         boton_niveles.style.display = 'none';
+        zona_jugadores.style.display = 'flex';
         this.victoria = false;
 
         jugadores.enemigos_restantes = filas*columnas;
-        console.log(this.jugadores.enemigos_restantes);
 
         let espaciado = 35 + 120/columnas;
 
@@ -28,7 +33,7 @@ class Partida   {
 
             for (let columna = 1; columna <= columnas; columna ++) {
 
-                this.enemigos.lista.push(new Enemigo(espaciado*columna + (canvas.width - columnas*espaciado)/2 - espaciado,
+                enemigos.lista.push(new Enemigo(espaciado*columna + (canvas.width - columnas*espaciado)/2 - espaciado,
                 espaciado*fila, canvas));
 
             }
@@ -39,9 +44,9 @@ class Partida   {
 
     logica()    {
 
-        this.jugadores.logica();
-        this.enemigos.logica();
-        this.proyectiles.logica(this.enemigos.lista);
+        jugadores.logica();
+        enemigos.logica();
+        proyectiles.logica(enemigos.lista);
         explosiones.logica();
 
         if (jugadores.enemigos_restantes <= 0 && !this.victoria)   {
@@ -53,16 +58,17 @@ class Partida   {
         }
     }
 
-    mostrar(ctx)   {
+    mostrar()   {
 
-        this.jugadores.mostrar(ctx);
-        this.enemigos.mostrar(ctx);
-        this.proyectiles.mostrar(ctx);
+        jugadores.mostrar();
+        enemigos.mostrar();
+        proyectiles.mostrar();
         explosiones.mostrar();
 
         ctx.font = "15px Helvetica";
         ctx.fillStyle = "white";
-        ctx.fillText(`Puntuación: ${this.puntos}`, 20, 20)
+        ctx.fillText(`Puntuación: ${this.puntos}`, 8, 20);
+        ctx.fillText(this.level, canvas.width/2 - (Math.ceil(Math.log10(this.level + 1))*5), canvas.height - 5);
 
         if (this.derrota)   {
 
@@ -72,7 +78,10 @@ class Partida   {
 
         } else if (this.victoria)   {
 
+            
+            zona_jugadores.style.display = 'none';
             boton_niveles.style.display = 'flex';
+
             ctx.font = "30px Arial";
             ctx.fillStyle = 'rgb(0, 255, 0)'
             ctx.fillText("Enhorabuena, Nivel superado !!!", ctx.canvas.width/2 - 190, ctx.canvas.height/2 - 50);

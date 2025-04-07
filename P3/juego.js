@@ -28,7 +28,7 @@ let proyectiles = {
 
             this.lista.forEach(proyect => {
                 
-                proyect.mostrar(ctx);
+                proyect.mostrar();
     
             });
 
@@ -64,7 +64,7 @@ let enemigos = {
 
             this.lista.forEach(enemy => {
                 
-                enemy.mostrar(ctx);
+                enemy.mostrar();
     
             });
 
@@ -100,7 +100,7 @@ let explosiones = {
 
             this.lista.forEach(explo => {
                 
-                explo.mostrar(explo);
+                explo.mostrar();
     
             });
 
@@ -146,8 +146,7 @@ let jugadores = {
 
 };
 
-const skin_nave = document.getElementById('nave');
-const skin_alien = document.getElementById('alien');
+let modo = 2;
 
 //-- Obtención del canvas y de los elementos HTML a usar
 
@@ -155,15 +154,38 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
 let boton_niveles = document.getElementById('nivel');
+let zona_jugadores = document.getElementById('jugadores');
+
+// Botones de los jugadores
+
+let botones_jugadores = {
+    tecla: ['ArrowLeft', 'ArrowRight', ' ', 'a', 'd', 'w'],
+    boton: [document.getElementById('disp_1'), document.getElementById('der_1'), document.getElementById('izq_1'),
+            document.getElementById('disp_2'), document.getElementById('der_2'), document.getElementById('izq_2')]
+}
+
+/*{
+
+    'ArrowLeft': document.getElementById('izq_2'),
+    'a': document.getElementById('izq_1'),
+    'ArrowRight': document.getElementById('der_2'),
+    'd': document.getElementById('der_1'),
+    ' ': document.getElementById('disp_2'),
+    'w': document.getElementById('disp_1')    
+
+};*/
+
 let sonido_disparo = document.getElementById('disparo');
 let sonido_explosion = document.getElementById('explosion');
 let sonido_win = document.getElementById('win');
 let sonido_derrota = document.getElementById('derrota');
 
-let skin_explosion = document.getElementById('explosion_img');
+let skins_naves = [document.getElementById('nave_2'), document.getElementById('nave')];
+const skin_alien = document.getElementById('alien');
+const skin_explosion = document.getElementById('explosion_img');
 
-let partida = new Partida(jugadores, enemigos, proyectiles, canvas);
-partida.nivel(3, 3);
+let partida = new Partida();
+partida.nivel(3, 8);
 
 //-- Función principal de actualización
 function update()   {
@@ -178,12 +200,78 @@ function update()   {
 
     //-- 3) Pintar los elementos en el canvas
     partida.mostrar(ctx);
+
     //-- 4) Repetir
     requestAnimationFrame(update);
 
 }
 
-//-- Otras funciones....
+//-- Otras funciones...
+
+for (let i = 0; i < 3*modo; i ++)  {
+
+    let boton = botones_jugadores.boton[i];
+    let tecla = botones_jugadores.tecla[(3*modo-1)-i];
+    console.log(boton);
+    console.log(tecla);
+
+    boton.addEventListener('mousedown', function()   {
+
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+    
+        boton.addEventListener('mouseup', function()   {
+    
+            document.dispatchEvent(new KeyboardEvent('keyup', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+
+}
+
+/*let ayu = 1;
+
+for (const [tecla, boton] of Object.entries(botones_jugadores)) {
+
+    if (ayu % modo == 0)   {
+
+        boton.addEventListener('mousedown', function()   {
+
+            document.dispatchEvent(new KeyboardEvent('keydown', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+    
+        boton.addEventListener('mouseup', function()   {
+    
+            document.dispatchEvent(new KeyboardEvent('keyup', {
+    
+                key: tecla,
+                bubbles: true
+              
+            }));
+    
+        });
+
+    }
+
+    ayu ++;
+
+}*/
 
 //-- ¡Que comience la fiesta! Hay que llamar a update la primera vez
 update();

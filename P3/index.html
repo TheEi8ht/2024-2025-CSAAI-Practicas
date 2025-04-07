@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <title>Space Invader</title>
 
     <link rel="stylesheet" href="style.css">
@@ -21,11 +23,8 @@
 
 <body>
 
-    <a  id="practicas" href="../">PRÁCTICAS</a>
-
-    <h1>Space Invader</h1>
-
     <img src="nave.png" alt="Nave no encontrada" id="nave">
+    <img src="nave_2.png" alt="Nave no encontrada" id="nave_2">
     <img src="alien.png" alt="Alien no encontrada" id="alien">
     <img src="explosion.png" alt="Explosion no encontrada" id="explosion_img">
     
@@ -34,10 +33,92 @@
     <audio id="win" src="win.mp3"></audio>
     <audio id="derrota" src="derrota.mp3"></audio>
 
-    <canvas id="canvas" width="650" height="500"></canvas>
-    <div id="nivel" onclick="partida.nivel(3, 8);">
+    <a  id="practicas" href="../">PRÁCTICAS</a>
 
-        <p>Siguiente nivel</p>
+    <div id="juego">
+
+        <h1>Space Invader</h1>
+
+        <canvas id="canvas" width="650" height="500"></canvas>
+
+        <div id="botones">
+
+            <div id="jugadores">
+
+                <div id="p1" class="movimientos">
+
+                    <div id="disp_1" class="disparos">
+
+                        <p>|</p>
+
+                    </div>
+
+                    <div class="flechas">
+
+                        <div id="izq_1">
+
+                            <p>&#60;</p>
+
+                        </div>
+
+                        <div id="der_1">
+
+                            <p>&#62;</p>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="jugador">
+
+                        <p>Player 1</p>
+
+                    </div>
+
+
+                </div>
+    
+                <div id="p2" class="movimientos">
+
+                    <div id="disp_2" class="disparos">
+
+                        <p>|</p>
+
+                    </div>
+                    
+                    <div class="flechas">
+
+                        <div id="izq_2">
+
+                            <p>&#60;</p>
+
+                        </div>
+
+                        <div id="der_2">
+
+                            <p>&#62;</p>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="jugador">
+
+                        <p>Player 2</p>
+
+                    </div>
+    
+                </div>
+
+            </div>
+
+            <div id="nivel" onclick="partida.nivel(3, 8);">
+
+                <p>Siguiente nivel</p>
+        
+            </div>
+
+        </div>
 
     </div>
     

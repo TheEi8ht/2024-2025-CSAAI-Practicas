@@ -46,7 +46,7 @@ class Proyectil {
 
     }
 
-    mostrar(ctx)   {
+    mostrar()   {
 
         ctx.save()
 
