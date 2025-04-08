@@ -14,18 +14,20 @@ class Proyectil {
 
     }
 
-    colision(enemigos)  {
+    colision()  {
 
-        for (let enemigo = 0; enemigo < enemigos.length; enemigo ++)   {
+        for (let enemigo = 0; enemigo < enemigos.lista.length; enemigo ++)   {
 
-            if (this.x >= enemigos[enemigo].x && this.x <= enemigos[enemigo].x + 35 &&
-                this.y + this.largo >= enemigos[enemigo].y && this.y <= enemigos[enemigo].y + 35
-                && !enemigos[enemigo].eliminado
+            let enemy = enemigos.lista[enemigo]
+
+            if (this.x >= enemy.x && this.x <= enemy.x + 35 &&
+                this.y + this.largo >= enemy.y && this.y <= enemy.y + 35
+                && !enemy.eliminado
             )    {
 
                 this.y = -this.largo;
-                enemigos[enemigo].eliminado = true;
-                explosiones.lista.push(new Explosion(enemigos[enemigo].x, enemigos[enemigo].y));
+                enemy.eliminado = true;
+                explosiones.lista.push(new Explosion(enemy.x, enemy.y));
                 sonido_explosion.currentTime = 0;
                 sonido_explosion.play();
 
@@ -39,10 +41,10 @@ class Proyectil {
 
     }
 
-    logica(enemigos, proyectiles)    {
+    logica()    {
 
         this.y -= this.vy
-        this.colision(enemigos, proyectiles);
+        this.colision();
 
     }
 

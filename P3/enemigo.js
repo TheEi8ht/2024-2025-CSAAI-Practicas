@@ -17,12 +17,10 @@ class Enemigo   {
 
     logica(enemigos)    {
 
-        let self  = this;
-
         if (this.y >= this.canvas.height - 85 && !this.derrota)  {
 
-            partida.derrota = true;
             enemigos.splice(0, enemigos.length);
+            fin_partida();
 
             sonido_derrota.currentTime = 0;
             sonido_derrota.play()
@@ -51,7 +49,7 @@ class Enemigo   {
 
             });
 
-            self.x = self.vx*2;
+            this.x = this.vx*2;
 
         }   else    {
 

@@ -93,7 +93,19 @@ img, video {
 
 }
 
-#jugadores  {
+#menu_principal {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+
+    width: 100%;
+
+}
+
+#seleccion  {
 
     display: flex;
     flex-direction: row;
@@ -102,6 +114,58 @@ img, video {
     align-content: center;
 
     width: 100%;
+
+}
+
+.players    {
+
+    width: 49%;
+    height: 50px;
+
+    background-color: rgba(150, 150, 150, 0.18);
+    border: 2px solid red;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+#empezar    {
+
+    width: 99%;
+    height: 50px;
+
+    margin-top: 5px;
+
+    background-color: rgba(150, 150, 150, 0.18);
+    border: 2px solid red;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+#jugadores  {
+
+    display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+
+    width: 100%;
+
+}
+
+#p1, #p2 {
+
+    display: none;
 
 }
 
@@ -196,6 +260,28 @@ img, video {
 }
 
 #nivel p    {
+
+    margin: 0;
+    font: 20px Arial black;
+
+}
+
+#restart  {
+
+    width: 300px;
+    height: 80px;
+    text-align: center;
+    background-color: blue;
+    color: red;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid red;
+
+}
+
+#restart p    {
 
     margin: 0;
     font: 20px Arial black;

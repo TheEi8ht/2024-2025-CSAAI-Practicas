@@ -27,6 +27,7 @@
     <img src="nave_2.png" alt="Nave no encontrada" id="nave_2">
     <img src="alien.png" alt="Alien no encontrada" id="alien">
     <img src="explosion.png" alt="Explosion no encontrada" id="explosion_img">
+    <img src="barspace.webp" alt="Barra espaciadora" id="barra_espaciadora">
     
     <audio id="disparo" src="disparo.mp3"></audio>
     <audio id="explosion" src="explosion.mp3"></audio>
@@ -42,6 +43,34 @@
         <canvas id="canvas" width="650" height="500"></canvas>
 
         <div id="botones">
+
+            <div id="menu_principal">
+
+                <div id="seleccion">
+
+                    <div id="un_jugador" type="button" value="1" class="players">
+
+                        <p>1 Jugador</p>
+
+                    </div>
+
+                    <div id="dos_jugadores" value="2" class="players">
+
+                        <p>2 Jugadores</p>
+
+                    </div>
+
+                </div>
+
+                <div id="empezar">
+
+                    <p>Comenzar partida</p>
+
+                </div>
+
+
+
+            </div>
 
             <div id="jugadores">
 
@@ -115,6 +144,12 @@
             <div id="nivel" onclick="partida.nivel(3, 8);">
 
                 <p>Siguiente nivel</p>
+        
+            </div>
+
+            <div id="restart" onclick="restart();">
+
+                <p>Reinniciar partida</p>
         
             </div>
 
