@@ -1,7 +1,7 @@
 
 class Enemigo   {
 
-    constructor(x, y, canvas, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
+    constructor(x, y, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
 
         this.x = x;
         this.y = y;
@@ -10,14 +10,13 @@ class Enemigo   {
         this.largo = largo;
         this.ancho = ancho;
         this.color = color;
-        this.canvas = canvas;
         this.eliminado = false;
 
     }
 
     logica(enemigos)    {
 
-        if (this.y >= this.canvas.height - 85 && !this.derrota)  {
+        if (this.y >= canvas.height - 85 && !this.derrota)  {
 
             enemigos.splice(0, enemigos.length);
             fin_partida();
@@ -27,7 +26,7 @@ class Enemigo   {
 
         }
 
-        if (this.x + this.vx >= this.canvas.width - 35)   {
+        if (this.x + this.vx >= canvas.width - 35)   {
 
             enemigos.forEach(enemy => {
             
@@ -36,7 +35,7 @@ class Enemigo   {
 
             });
 
-            self.x = this.canvas.width - 35;
+            self.x = canvas.width - 35;
 
         }   else if (this.x + this.vx <= 0)   {
 

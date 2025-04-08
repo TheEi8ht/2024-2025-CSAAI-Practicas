@@ -36,7 +36,7 @@ class Partida   {
             for (let columna = 1; columna <= columnas; columna ++) {
 
                 enemigos.lista.push(new Enemigo(espaciado*columna + (canvas.width - columnas*espaciado)/2 - espaciado,
-                espaciado*fila, canvas));
+                espaciado*fila, this.level));
 
             }
 
@@ -51,11 +51,11 @@ class Partida   {
             this.modo = 2;
             sonido_win.currentTime = 0;
             jugadores.lista.splice(0);
-            explosiones.lista.splice(0)
+            explosiones.lista.splice(0);
+            sonido_win.play();
 
         }   else if (this.modo == 1)  {
 
-            sonido_win.play();
             jugadores.logica();
             enemigos.logica();
             proyectiles.logica(enemigos.lista);
