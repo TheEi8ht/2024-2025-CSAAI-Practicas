@@ -10,13 +10,14 @@ class Jugador   {
         this.btns = btns;
         this.x = x;
         this.y = canvas.height - 55;
+        this.vidas = 3;
 
         let self  = this;
         self.teclas = {};
 
         document.addEventListener('keydown', (evt) => {
 
-            if ((evt.key === ' ' || evt.key === 'w') && evt.repeat)  {
+            if ((evt.key === ' ' || evt.key === 'w') && evt.repeat && !modo_desarrollador)  {
 
                 delete self.teclas[evt.key];
 
@@ -40,9 +41,13 @@ class Jugador   {
 
         if (this.teclas[this.btns[2]])    {
                 
-            proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, 'red', 1, this.v_proyectil));
+            proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, 'red', 0, this.v_proyectil));
             
-            delete this.teclas[this.btns[2]];
+            if (!modo_desarrollador)    {
+
+                delete this.teclas[this.btns[2]];
+
+            }
     
         }
         
@@ -70,13 +75,15 @@ class Jugador   {
 
     }
 
-    mostrar()    {
-
-        ctx.save();
+    mostrar(num)    {
 
         ctx.drawImage(this.skin, this.x, this.y)
 
-        ctx.restore();
+        for (let i = 0; i < this.vidas; i ++)   {
+
+            ctx.drawImage(vida_img, (i*22)*(num) + (canvas.width - i*22 - 19)*(1-num), canvas.height - 20);
+
+        }
 
     }
 

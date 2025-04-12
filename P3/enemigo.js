@@ -1,7 +1,7 @@
 
 class Enemigo   {
 
-    constructor(x, y, vx=1, vy=10) {
+    constructor(x, y, vx=1, vy=10, p_disp=0) {
 
         this.x = x;
         this.y = y;
@@ -10,13 +10,13 @@ class Enemigo   {
         this.largo = 35;
         this.ancho = 35;
         this.eliminado = false;
-        console.log(this.vy);
+        this.prob_disparo = p_disp;
 
     }
 
     logica(enemigos)    {
 
-        if (this.y >= canvas.height - 85 && !this.derrota)  {
+        if (this.y >= canvas.height - 85 && !this.derrota || jugadores.lista.length <= 0)  {
 
             enemigos.splice(0, enemigos.length);
             fin_partida();
@@ -27,6 +27,12 @@ class Enemigo   {
         }
 
         this.x += this.vx;
+
+        if (Math.random() <= this.prob_disparo/60) {
+
+            proyectiles.lista.push(new Proyectil(this.x + this.ancho/2, this.y + this.largo + 8, 'green', 0, -1, 8, 3, true));
+
+        }
 
     }
 

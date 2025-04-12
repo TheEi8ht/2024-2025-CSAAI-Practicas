@@ -1,5 +1,7 @@
 console.log('Comenzando juego');
 
+let modo_desarrollador = false;
+
 //-- Declaración de variables y objetos
 
 let proyectiles = {
@@ -16,7 +18,7 @@ let proyectiles = {
     
             });
 
-            this.lista = this.lista.filter(proyect => proyect.y >= 0);
+            this.lista = this.lista.filter(proyect => proyect.y + proyect.largo >= 0 && proyect.y - proyect.largo <= canvas.height);
 
         }
         
@@ -137,6 +139,8 @@ let jugadores = {
     
             });
 
+            this.lista = this.lista.filter(jug => jug.vidas > 0);
+
         }
         
     },
@@ -145,9 +149,9 @@ let jugadores = {
 
         if (this.lista.length > 0)  {
 
-            this.lista.forEach(jug => {
+            this.lista.forEach((jug, ind) => {
                 
-                jug.mostrar();
+                jug.mostrar(ind);
     
             });
 
@@ -185,11 +189,16 @@ let sonido_disparo = document.getElementById('disparo');
 let sonido_explosion = document.getElementById('explosion');
 let sonido_win = document.getElementById('win');
 let sonido_derrota = document.getElementById('derrota');
+let sonido_impacto = document.getElementById('impacto');
+
+sonido_disparo.volume = 0.2;
+sonido_explosion.volume = 0.3;
 
 let skins_naves = [document.getElementById('nave_2'), document.getElementById('nave')];
 const skin_alien = document.getElementById('alien');
 const skin_explosion = document.getElementById('explosion_img');
 const barra_espaciadora = document.getElementById('barra_espaciadora');
+const vida_img = document.getElementById('vida');
 
 let partida_empezada = false;
 let partida = new Partida();
@@ -247,8 +256,6 @@ start.onclick = () => {
 
 function inicio_partida()   {
 
-    partida.nivel();
-
     for (let i = 0; i < 3*modo; i ++)  {
 
         let boton = botones_jugadores.boton[i];
@@ -304,6 +311,14 @@ function inicio_partida()   {
 
     partida_empezada = true;
 
+    for (let i = 0; i <= modo-1; i ++) {
+
+        jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2));
+
+    }
+
+    partida.nivel();
+
 }
 
 function fin_partida()  {
@@ -332,6 +347,34 @@ function restart()  {
     menu_principal.style.display = 'flex';
 
 }
+
+const teclas_desarrollador = {j: false, h: false};
+
+document.addEventListener('keydown', (evt) => {
+
+    if (evt.key in teclas_desarrollador)   {
+
+        teclas_desarrollador[evt.key] = true;
+
+    }
+    
+    if (Object.values(teclas_desarrollador).every(tecla => tecla) && !evt.repeat) {
+
+        modo_desarrollador = !modo_desarrollador;
+
+    }
+
+});
+
+document.addEventListener('keyup', (evt) => {
+
+    if (evt.key in teclas_desarrollador)   {
+
+        teclas_desarrollador[evt.key] = false;
+
+    }
+
+});
 
 //-- ¡Que comience la fiesta! Hay que llamar a update la primera vez
 update();
