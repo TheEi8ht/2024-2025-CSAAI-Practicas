@@ -1,16 +1,16 @@
 
 class Enemigo   {
 
-    constructor(x, y, vx=1, vy=10, largo=35, ancho=35, color='rgb(0, 255, 0)') {
+    constructor(x, y, vx=1, vy=10) {
 
         this.x = x;
         this.y = y;
         this.vx = vx;
         this.vy = vy;
-        this.largo = largo;
-        this.ancho = ancho;
-        this.color = color;
+        this.largo = 35;
+        this.ancho = 35;
         this.eliminado = false;
+        console.log(this.vy);
 
     }
 
@@ -26,35 +26,7 @@ class Enemigo   {
 
         }
 
-        if (this.x + this.vx >= canvas.width - 35)   {
-
-            enemigos.forEach(enemy => {
-            
-                enemy.vx *= -1;
-                enemy.y += enemy.vy;
-
-            });
-
-            self.x = canvas.width - 35;
-
-        }   else if (this.x + this.vx <= 0)   {
-
-
-
-            enemigos.forEach(enemy => {
-                
-                enemy.vx *= -1;
-                enemy.y += enemy.vy;
-
-            });
-
-            this.x = this.vx*2;
-
-        }   else    {
-
-            this.x += this.vx;
-
-        }
+        this.x += this.vx;
 
     }
 

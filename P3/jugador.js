@@ -40,7 +40,7 @@ class Jugador   {
 
         if (this.teclas[this.btns[2]])    {
                 
-            proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, this.v_proyectil));
+            proyectiles.lista.push(new Proyectil(this.x + 17.5, this.y - 8, 'red', 1, this.v_proyectil));
             
             delete this.teclas[this.btns[2]];
     

@@ -1,4 +1,16 @@
 
+let logica_niveles = {
+
+logica: function()  {
+
+    partida.opciones_nivel.vx_enemigos = Math.pow(2, 0.5*((partida.level - 1)%10)/4.5) + 10*Math.log10(Math.floor((partida.level - 1)/10)/3 + 1);
+    partida.opciones_nivel.vy_enemigos = 5 * Math.log(Math.floor((partida.level - 1 + 10)/5)/2) + 4;
+    
+}
+
+
+};
+
 class Partida   {
 
     constructor()   {
@@ -6,11 +18,19 @@ class Partida   {
         this.modo = 0;
         this.puntos = 0;
         this.level = 0;
+        this.opciones_nivel = {
+
+            filas: 3,
+            columnas: 8,
+            vx_enemigos: 1,
+            vy_enemigos: 1
+
+        };
         
 
     }
 
-    nivel(filas, columnas) {
+    nivel() {
         
         this.level ++;
 
@@ -19,24 +39,24 @@ class Partida   {
         zona_jugadores.style.display = 'flex';
         this.modo = 1;
 
+        logica_niveles.logica();
+
         for (let i = 0; i <= modo-1; i ++) {
 
             jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2));
 
         }
 
-        console.log(jugadores.lista);
+        jugadores.enemigos_restantes = this.opciones_nivel.filas*this.opciones_nivel.columnas;
 
-        jugadores.enemigos_restantes = filas*columnas;
+        let espaciado = 35 + 120/this.opciones_nivel.columnas;
 
-        let espaciado = 35 + 120/columnas;
+        for (let fila = 1; fila <= this.opciones_nivel.filas; fila ++)  {
 
-        for (let fila = 1; fila <= filas; fila ++)  {
+            for (let columna = 1; columna <= this.opciones_nivel.columnas; columna ++) {
 
-            for (let columna = 1; columna <= columnas; columna ++) {
-
-                enemigos.lista.push(new Enemigo(espaciado*columna + (canvas.width - columnas*espaciado)/2 - espaciado,
-                espaciado*fila, this.level));
+                enemigos.lista.push(new Enemigo(espaciado*columna + (canvas.width - this.opciones_nivel.columnas*espaciado)/2 - espaciado,
+                espaciado*fila, this.opciones_nivel.vx_enemigos, this.opciones_nivel.vy_enemigos));
 
             }
 

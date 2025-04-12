@@ -1,9 +1,10 @@
 class Proyectil {
 
-    constructor(x, y, vy=1, largo=8, ancho=3, color='red') {
+    constructor(x, y, color='red', vx=0, vy=1, largo=8, ancho=3) {
 
         this.x = x;
         this.y = y;
+        this.vx = vx;
         this.vy = vy;
         this.largo = largo;
         this.ancho = ancho;

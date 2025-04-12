@@ -46,6 +46,17 @@ let enemigos = {
 
         if (this.lista.length > 0)  {
 
+            if (this.lista.filter(enemy => enemy.x <= 0 || enemy.x >= canvas.width-35).length)  {
+
+                this.lista.forEach(enemy => {
+    
+                    enemy.vx *= -1;
+                    enemy.y += enemy.vy;
+    
+                });
+    
+            }
+
             this.lista.forEach(enemy => {
             
                 enemy.logica(this.lista);
@@ -236,7 +247,7 @@ start.onclick = () => {
 
 function inicio_partida()   {
 
-    partida.nivel(3, 8);
+    partida.nivel();
 
     for (let i = 0; i < 3*modo; i ++)  {
 
@@ -299,11 +310,15 @@ function fin_partida()  {
 
     partida_empezada = false;
     partida.modo = 3;
+    partida.level = 0;
+    partida.puntos = 0;
 
     zona_jugadores.style.display = 'none';
     reinicio.style.display = 'flex';
 
     jugadores.lista.splice(0);
+    enemigos.lista.splice(0);
+    proyectiles.lista.splice(0);
 
     console.log('Partida perdida...');
 
