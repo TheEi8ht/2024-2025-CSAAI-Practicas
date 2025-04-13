@@ -45,6 +45,8 @@ class Partida   {
         
         this.level ++;
 
+        console.log(jugadores.lista)
+
         menu_principal.style.display = 'none';
         boton_niveles.style.display = 'none';
         zona_jugadores.style.display = 'flex';
@@ -57,7 +59,7 @@ class Partida   {
 
         for (let i = 0; i < jugadores.lista.length; i ++) {
 
-            jugadores.lista[i].x = canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2;
+            jugadores.lista[i].x = canvas.width/2 - 35/2 + (Math.pow(-1, 1 - jugadores.lista[i].id))*(300)*(modo-1)/2;
     
         }
 

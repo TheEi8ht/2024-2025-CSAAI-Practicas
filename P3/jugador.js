@@ -1,7 +1,7 @@
 
 class Jugador   {
 
-    constructor(skin, btns, vx, vp, x=0)   {
+    constructor(skin, btns, vx, vp, x=0, id)   {
 
         this.skin = skin;
         this.botones = botones;
@@ -11,6 +11,7 @@ class Jugador   {
         this.x = x;
         this.y = canvas.height - 55;
         this.vidas = 3;
+        this.id = id;
 
         let self  = this;
         self.teclas = {};
@@ -75,13 +76,13 @@ class Jugador   {
 
     }
 
-    mostrar(num)    {
+    mostrar()    {
 
         ctx.drawImage(this.skin, this.x, this.y)
 
         for (let i = 0; i < this.vidas; i ++)   {
 
-            ctx.drawImage(vida_img, (i*22)*(num) + (canvas.width - i*22 - 19)*(1-num), canvas.height - 20);
+            ctx.drawImage(vida_img, (i*22)*(1 - this.id) + (canvas.width - i*22 - 19)*(this.id), canvas.height - 20);
 
         }
 

@@ -149,9 +149,9 @@ let jugadores = {
 
         if (this.lista.length > 0)  {
 
-            this.lista.forEach((jug, ind) => {
+            this.lista.forEach((jug) => {
                 
-                jug.mostrar(ind);
+                jug.mostrar();
     
             });
 
@@ -313,7 +313,7 @@ function inicio_partida()   {
 
     for (let i = 0; i <= modo-1; i ++) {
 
-        jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2));
+        jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2, Math.abs(i - modo) - 1));
 
     }
 
