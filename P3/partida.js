@@ -44,9 +44,7 @@ class Partida   {
     nivel() {
         
         this.level ++;
-
-        console.log(jugadores.lista)
-
+        
         menu_principal.style.display = 'none';
         boton_niveles.style.display = 'none';
         zona_jugadores.style.display = 'flex';
