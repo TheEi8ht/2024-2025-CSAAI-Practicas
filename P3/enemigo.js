@@ -22,7 +22,7 @@ class Enemigo   {
             fin_partida();
 
             sonido_derrota.currentTime = 0;
-            sonido_derrota.play()
+            sonido_derrota.play();
 
         }
 
@@ -38,11 +38,7 @@ class Enemigo   {
 
     mostrar()    {
 
-        ctx.save();
-
         ctx.drawImage(skin_alien, this.x, this.y);
-
-        ctx.restore();
 
     }
 

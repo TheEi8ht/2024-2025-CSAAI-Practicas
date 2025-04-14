@@ -22,11 +22,11 @@ class Proyectil {
 
             for (let enemigo = 0; enemigo < enemigos.lista.length; enemigo ++)   {
 
-                let enemy = enemigos.lista[enemigo]
+                let enemy = enemigos.lista[enemigo];
     
                 if (this.x + this.ancho >= enemy.x && this.x <= enemy.x + 35 &&
-                    this.y + this.largo >= enemy.y && this.y <= enemy.y + 35
-                    && !enemy.eliminado
+                    this.y + this.largo >= enemy.y && this.y <= enemy.y + 35 &&
+                    !enemy.eliminado
                 )    {
     
                     this.y = -this.largo;
@@ -68,14 +68,14 @@ class Proyectil {
 
     logica()    {
 
-        this.y -= this.vy
+        this.y -= this.vy;
         this.colision();
 
     }
 
     mostrar()   {
 
-        ctx.save()
+        ctx.save();
 
         ctx.beginPath();
 

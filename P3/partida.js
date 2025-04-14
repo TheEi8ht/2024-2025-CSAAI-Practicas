@@ -44,7 +44,7 @@ class Partida   {
     nivel() {
         
         this.level ++;
-        
+
         menu_principal.style.display = 'none';
         boton_niveles.style.display = 'none';
         zona_jugadores.style.display = 'flex';
@@ -83,6 +83,7 @@ class Partida   {
             this.modo = 2;
             explosiones.lista.splice(0);
             proyectiles.lista.splice(0);
+            enemigos.lista.splice(0);
 
             sonido_win.currentTime = 0;
             sonido_win.play();
@@ -148,14 +149,14 @@ class Partida   {
             ctx.font = "35px Helvetica";
             ctx.fillText('Jugador 1', 90, 125);
             ctx.fillText('Jugador 2', 405, 125);
-            ctx.font = "30px Helvetica"
+            ctx.font = "30px Helvetica";
             ctx.fillText('Nave', 290, 175);
             ctx.drawImage(skins_naves[0], 145, 150);
             ctx.drawImage(skins_naves[1], 460, 150);
             ctx.fillText('Controles',100, 250);
             ctx.fillText('Controles', 415, 250);
 
-            ctx.font = "20px Helvetica"
+            ctx.font = "20px Helvetica";
 
             ctx.fillText('Disparo', 125, 325);
             ctx.fillText('Mov. Izquierda', 20, 410);
@@ -194,21 +195,15 @@ class Partida   {
         boton_niveles.style.display = 'flex';
 
         ctx.font = "30px Arial";
-        ctx.fillStyle = 'rgb(0, 255, 0)'
+        ctx.fillStyle = 'rgb(0, 255, 0)';
         ctx.fillText("Enhorabuena, Nivel superado !!!", ctx.canvas.width/2 - 190, ctx.canvas.height/2 - 50);
-
-        for (let proy of proyectiles.lista)   {
-
-            proy.y = 0;
-
-        }
 
     }
 
     derrota()   {
 
         ctx.font = "48px Arial";
-        ctx.fillStyle = 'red'
+        ctx.fillStyle = 'red';
         ctx.fillText("GAME OVER", ctx.canvas.width/2 - 145, ctx.canvas.height/2);
 
     }

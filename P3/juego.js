@@ -121,7 +121,7 @@ let explosiones = {
 
     }
 
-}
+};
 
 let jugadores = {
 
@@ -181,8 +181,7 @@ let botones_jugadores = {
     tecla: ['ArrowLeft', 'ArrowRight', ' ', 'a', 'd', 'w'],
     boton: [document.getElementById('disp_1'), document.getElementById('der_1'), document.getElementById('izq_1'),
             document.getElementById('disp_2'), document.getElementById('der_2'), document.getElementById('izq_2')]
-}
-
+};
 let boton_niveles = document.getElementById('nivel');
 
 let sonido_disparo = document.getElementById('disparo');
@@ -200,7 +199,7 @@ const skin_explosion = document.getElementById('explosion_img');
 const barra_espaciadora = document.getElementById('barra_espaciadora');
 const vida_img = document.getElementById('vida');
 
-let partida_empezada = false;
+//let partida_empezada = false;
 let partida = new Partida();
 
 //-- Función principal de actualización
@@ -262,13 +261,13 @@ function inicio_partida()   {
         let tecla = botones_jugadores.tecla[(3*modo-1)-i];
     
         boton.addEventListener('mousedown', function()   {
+
+            document.dispatchEvent(new KeyboardEvent('keydown', {
     
-                document.dispatchEvent(new KeyboardEvent('keydown', {
-        
-                    key: tecla,
-                    bubbles: false
-                  
-                }));
+                key: tecla,
+                bubbles: false
+                
+            }));
         
             });
         
@@ -309,11 +308,11 @@ function inicio_partida()   {
     
     }
 
-    partida_empezada = true;
+    //partida_empezada = true;
 
     for (let i = 0; i <= modo-1; i ++) {
 
-        jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2, Math.abs(i - modo) - 1));
+        jugadores.lista.push(new Jugador(skins_naves[1 - i], botones_jugadores.tecla.slice(i*3, i*3 + 3), 2, 1, Math.abs(i - modo) - 1, canvas.width/2 - 35/2 + (Math.pow(-1, i))*(300)*(modo-1)/2));
 
     }
 
@@ -323,7 +322,7 @@ function inicio_partida()   {
 
 function fin_partida()  {
 
-    partida_empezada = false;
+    //partida_empezada = false;
     partida.modo = 3;
     partida.level = 0;
     partida.puntos = 0;

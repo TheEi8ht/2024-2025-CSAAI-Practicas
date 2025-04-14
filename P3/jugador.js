@@ -1,7 +1,7 @@
 
 class Jugador   {
 
-    constructor(skin, btns, vx, vp, x=0, id)   {
+    constructor(skin, btns, vx, vp, id, x=0)   {
 
         this.skin = skin;
         this.botones = botones;
@@ -78,7 +78,7 @@ class Jugador   {
 
     mostrar()    {
 
-        ctx.drawImage(this.skin, this.x, this.y)
+        ctx.drawImage(this.skin, this.x, this.y);
 
         for (let i = 0; i < this.vidas; i ++)   {
 
