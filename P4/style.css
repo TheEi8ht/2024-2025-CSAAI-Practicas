@@ -55,14 +55,14 @@ body    {
 
 }
 
-#comenzar, #size   {
+#comenzar, #size, #reiniciar   {
 
     width: 20%;
     height: 50%;
 
 }
 
-#comenzar   {
+#comenzar, #reiniciar   {
 
     background-color: black;
     color: red;
@@ -77,7 +77,7 @@ body    {
 
 }
 
-#comenzar:hover {
+#comenzar:hover, #reiniciar:hover {
 
     background-color: rgb(58, 58, 58);
     color: rgb(255, 57, 57);
@@ -85,13 +85,20 @@ body    {
 
 }
 
-#comenzar p {
+#comenzar p, #reiniciar p {
 
     width: 100%;
     font-size: 110%;
 
 
 }
+
+#reiniciar  {
+
+    display: none;
+
+}
+
 
 #size   {
 
@@ -142,9 +149,6 @@ body    {
 }
 
 .carta  {
-
-    width: 45%;
-    height: 45%;
 
     position: relative;
 
