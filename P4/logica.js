@@ -2,9 +2,7 @@
 function victoria() {
 
     win.innerHTML = `Has ganado!!!<br>Has realizado un total de ${displays.movs} intentos en un tiempo de ${displays.time.sec}.${displays.time.cen} segundos`
-    requestAnimationFrame(() => {
-        win.classList.add('victoria');
-      });
+    win.classList.add('victoria');
 
     displays.parar();
 

@@ -20,6 +20,32 @@ body    {
     color: white;
     min-height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+}
+
+#practicas   {
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    padding: 2px;
+
+    background-color: rgb(255, 217, 0);
+    color: black;
+
+    border: 2px solid red;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-style: normal;
+    font-size: 150%;
+
 }
 
 #juego  {
@@ -174,16 +200,16 @@ body    {
     padding: 15%;
 
     visibility: hidden;
-    transform: rotateY(0deg) scale(0) rotateX(180deg);
+    transform: scale(0);
 
-    transition: transform 1.5s ease-in;
+    transition: transform 1s ease-in;
 
 }
 
 #victoria.victoria {
 
     visibility: visible;
-    transform: rotateY(360deg) scale(1) rotateX(720deg);
+    transform: scale(1);
 
 }
 
@@ -267,6 +293,23 @@ body    {
     border-color: rgb(6, 0, 84);
 
 }
+
+@media screen and (max-width: 910px)    {
+
+    #practicas   {
+
+        position: inherit;
+        margin-top: 8px;
+    
+    }
+
+    #juego  {
+
+        height: 85%;
+
+    }
+
+} 
 
 @media screen and (max-width: 600px) {
 
