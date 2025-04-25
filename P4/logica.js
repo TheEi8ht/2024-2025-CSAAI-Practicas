@@ -271,7 +271,7 @@ let displays = {
 
                 }
 
-                texto = self.time.sec.toString() + '.' + self.time.cen.toString().padStart(2, '0') + ' segundos';
+                texto = self.time.sec.toString() + '.' + self.time.cen.toString().padStart(2, '0') + ' Segundos';
 
                 self.tiempo.innerHTML = texto;
 
@@ -293,7 +293,7 @@ let displays = {
         this.parar();
         this.time = {min: 0, sec: 0, cen: 0};
         this.movimientos.innerHTML = '0 Movimientos';
-        this.tiempo.innerHTML = '0 segundos';
+        this.tiempo.innerHTML = '0 Segundos';
 
     }
 
