@@ -170,6 +170,12 @@ botones.start.onclick = iniciar;
 
 botones.restart.onclick = reset;
 
+size.addEventListener('change', () => {
+
+    generar();
+
+});
+
 let tablero = document.getElementById('tablero');
 let win = document.getElementById('victoria');
 
@@ -192,13 +198,7 @@ let imagenes = [
     {src: 'Stitch.webp', name: 'Stitch'},
     {src: 'tristeza.webp', name: 'Tristeza'},
     {src: 'Woody.webp', name: 'Woody'}
-]
-
-size.addEventListener('change', () => {
-
-    generar();
-
-});
+];
 
 let cartas_seleccionadas = {
 
