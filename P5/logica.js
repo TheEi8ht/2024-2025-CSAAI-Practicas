@@ -34,6 +34,28 @@ class Nodo  {
 
     }
 
+    mostrar_usado() {
+
+        ctx.beginPath();
+
+        ctx.arc(this.x, this.y, this.radio, 0, 2*Math.PI);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#00FF00';
+        ctx.fillStyle = 'green';
+
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.closePath();
+
+        ctx.font = "15px Helvetica";
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText(`N${this.id}`, this.x, this.y - 5);
+        ctx.fillText(`${this.delay.toString().padEnd(6, '0')}s`, this.x, this.y + 10);
+
+    }
+
 
 }
 
@@ -118,8 +140,8 @@ function crearCaminos(nodo)  {
 
         peso = Math.sqrt(Math.pow(nodo.x - nodo_escogido.x, 2) + Math.pow(nodo.y - nodo_escogido.y, 2));
         
-        nodo.caminos.push({go: caminos_disponibles[n_random], peso: peso});
-        caminos_disponibles[n_random].caminos.push({go: nodo, peso: peso});
+        nodo.caminos.push({in: nodo, go: caminos_disponibles[n_random], peso: peso});
+        caminos_disponibles[n_random].caminos.push({in: caminos_disponibles[n_random], go: nodo, peso: peso});
         
         redes.caminos.push([nodo.id, nodo_escogido.id, peso])
 
@@ -133,6 +155,11 @@ function generar()  {
 
     redes.nodos = [];
     redes.caminos = [];
+    redes.camino_generado = [];
+    redes.tiempo_total = 0;
+
+    displays.tiempo.innerHTML = 'Tiempo total: 0 segundos';
+
     const n_nodos = Math.floor((3/Math.sqrt(1.5))*Math.sqrt(Math.random()*1.5) + 3);
     let delay;
     let x;
@@ -140,7 +167,7 @@ function generar()  {
     let radio = 35;
 
     displays.nodos.innerHTML = `${n_nodos} Nodos`;
-    displays.info.innerHTML = 'Red generada.'
+    displays.info.innerHTML = 'Red generada correctamente.'
 
     for (let i = 0; i < n_nodos; i ++)  {
 
@@ -168,13 +195,43 @@ function generar()  {
 
 }
 
+function nodos_usados()  {
+
+    for (let nodo of redes.camino_generado) {
+
+        nodo.mostrar_usado();
+
+    }
+
+}
+
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-let redes = {nodos: [], caminos: []};
+let redes = {nodos: [], caminos: [], camino_generado: [], tiempo_total: 0};
 
 let botones = {generar: document.getElementById('generar'), calcular: document.getElementById('calcular')};
 
-let displays = {nodos: document.getElementById('nodos'), info: document.getElementById('info')};
+let displays = {nodos: document.getElementById('nodos'), tiempo: document.getElementById('tiempo'), info: document.getElementById('info')};
 
 botones.generar.onclick = generar;
+botones.calcular.onclick = () => {
+    
+
+    if (redes.nodos.length > 0) {
+
+        [redes.camino_generado, redes.tiempo_total] = findDijkstra(redes.nodos[0], redes.nodos[redes.nodos.length - 1]);
+
+        nodos_usados();
+
+        displays.info.innerHTML = 'Camino calculado correctamente.'
+        displays.tiempo.innerHTML = `Tiempo total: ${(Math.round(redes.tiempo_total*100)/100).toString().padEnd(2, '0')} segundos`;
+
+    }   else    {
+
+        displays.info.innerHTML = 'No se puede calcular la ruta. Genere una red primero.'
+
+    }
+    
+};
+
