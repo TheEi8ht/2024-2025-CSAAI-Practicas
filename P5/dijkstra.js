@@ -41,7 +41,7 @@ function findDijkstra(nodo_inicial, nodo_final) {
     
             }
             
-            caminos_nuevos.push({camino: caminos_disponibles[minimo], peso: dist_minimo + distancia_nodos[nodo.id].distancia})
+            caminos_nuevos.push({camino: caminos_disponibles[minimo], peso: dist_minimo + distancia_nodos[nodo.id].distancia});
     
         }
     

@@ -63,11 +63,11 @@ function mostrar_caminos()  {
 
     for (let camino of redes.caminos)    {
         
-        ctx.beginPath()
+        ctx.beginPath();
 
-        start = redes.nodos[camino[0]];
-        end = redes.nodos[camino[1]];
-        peso = Math.round(camino[2]*100)/100;
+        let start = redes.nodos[camino[0]];
+        let end = redes.nodos[camino[1]];
+        let peso = Math.round(camino[2]*100)/100;
 
         ctx.moveTo(start.x, start.y);
         ctx.lineTo(end.x, end.y);
@@ -81,7 +81,7 @@ function mostrar_caminos()  {
         ctx.fillStyle = 'rgb(0, 229, 255)';
         ctx.textAlign = 'center';
         ctx.fillText(`N${start.id} - N${end.id}`, Math.min(start.x, end.x) + Math.abs(start.x - end.x)/2, Math.min(start.y, end.y) + Math.abs(start.y - end.y)/2 - 10);
-        ctx.fillText(`pw ${peso}`, Math.min(start.x, end.x) + Math.abs(start.x - end.x)/2, Math.min(start.y, end.y) + Math.abs(start.y - end.y)/2 + 10)
+        ctx.fillText(`pw ${peso}`, Math.min(start.x, end.x) + Math.abs(start.x - end.x)/2, Math.min(start.y, end.y) + Math.abs(start.y - end.y)/2 + 10);
 
     }
 
@@ -143,7 +143,7 @@ function crearCaminos(nodo)  {
         nodo.caminos.push({in: nodo, go: caminos_disponibles[n_random], peso: peso});
         caminos_disponibles[n_random].caminos.push({in: caminos_disponibles[n_random], go: nodo, peso: peso});
         
-        redes.caminos.push([nodo.id, nodo_escogido.id, peso])
+        redes.caminos.push([nodo.id, nodo_escogido.id, peso]);
 
     }
 
@@ -167,7 +167,7 @@ function generar()  {
     let radio = 35;
 
     displays.nodos.innerHTML = `${n_nodos} Nodos`;
-    displays.info.innerHTML = 'Red generada correctamente.'
+    displays.info.innerHTML = 'Red generada correctamente.';
 
     for (let i = 0; i < n_nodos; i ++)  {
 
@@ -224,12 +224,12 @@ botones.calcular.onclick = () => {
 
         nodos_usados();
 
-        displays.info.innerHTML = 'Camino calculado correctamente.'
+        displays.info.innerHTML = 'Camino calculado correctamente.';
         displays.tiempo.innerHTML = `Tiempo total: ${(Math.round(redes.tiempo_total*100)/100).toString().padEnd(2, '0')} segundos`;
 
     }   else    {
 
-        displays.info.innerHTML = 'No se puede calcular la ruta. Genere una red primero.'
+        displays.info.innerHTML = 'No se puede calcular la ruta. Genere una red primero.';
 
     }
     
