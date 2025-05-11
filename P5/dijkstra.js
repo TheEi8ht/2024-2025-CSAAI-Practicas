@@ -8,9 +8,7 @@ function findDijkstra(nodo_inicial, nodo_final) {
     let distancia_nodos = {[nodo_inicial.id]: {nodo: nodo_inicial, distancia: 0}};
     let caminos_generados = [];
 
-    let ayu = true;
-
-    while (ayu)  {
+    while (true)  {
 
         for (let nodo of nodos_visitados)   {
             
@@ -27,18 +25,23 @@ function findDijkstra(nodo_inicial, nodo_final) {
             }
     
             let minimo = 0;
+            let dist_minimo = caminos_disponibles[minimo].peso + caminos_disponibles[minimo].go.delay;
+            let dist_cam;
     
             for (let cam_disp = 0; cam_disp < caminos_disponibles.length; cam_disp++)    {
                 
-                if (caminos_disponibles[cam_disp].peso < caminos_disponibles[minimo].peso) {
+                dist_cam = caminos_disponibles[cam_disp].peso + caminos_disponibles[cam_disp].go.delay;
+
+                if (dist_cam < dist_minimo) {
                     
                     minimo = cam_disp;
+                    dist_minimo = dist_cam;
     
                 }
     
             }
             
-            caminos_nuevos.push({camino: caminos_disponibles[minimo], peso: caminos_disponibles[minimo].peso + distancia_nodos[nodo.id].distancia})
+            caminos_nuevos.push({camino: caminos_disponibles[minimo], peso: dist_minimo + distancia_nodos[nodo.id].distancia})
     
         }
     
@@ -71,11 +74,7 @@ function findDijkstra(nodo_inicial, nodo_final) {
     
         caminos_nuevos = [];
         
-        if (cam_min.camino.go == nodo_final)    {
-
-            ayu = !ayu;
-
-        }
+        if (cam_min.camino.go == nodo_final)    break;
 
     }
 
@@ -84,7 +83,7 @@ function findDijkstra(nodo_inicial, nodo_final) {
     let siguiente_camino;
     let tiempo = nodo_final.delay;
 
-    while(!ayu) {
+    while(true) {
 
         siguiente_camino = caminos_generados.filter(c => c.camino.go == camino_final[0])[0];
         siguiente_nodo = siguiente_camino.camino.in;
@@ -93,15 +92,9 @@ function findDijkstra(nodo_inicial, nodo_final) {
 
         tiempo += siguiente_nodo.delay;
 
-        if (siguiente_nodo == nodo_inicial) {
-
-            ayu = !ayu;
-
-        }
+        if (siguiente_nodo == nodo_inicial) break;
 
     }
-
-    console.log(camino_final, tiempo);
 
     return [camino_final, tiempo];
 

@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
     <title>Simulando la red</title>
 
     <link rel="stylesheet" href="style.css">
@@ -17,31 +19,33 @@
 </head>
 
 <body>
-    
-<div id="red">
 
-    <div id="ayuda">
+    <a  id="practicas" href="../">PRÁCTICAS</a>
+        
+    <div id="red">
 
-        <button id="generar" class="boton">Generar Red</button>
-        <button id="calcular" class="boton">Calcular Red</button>
+        <div id="ayuda">
 
-        <div id="display">
+            <button id="generar" class="boton">Generar Red</button>
+            <button id="calcular" class="boton">Calcular Red</button>
 
-            <p id="nodos" class="texto">0 Nodos</p>
-            <p id="tiempo" class="texto">Tiempo total: 0 segundos</p>
-            <p id="info" class="texto"></p>
+            <div id="display">
+
+                <p id="nodos" class="texto">0 Nodos</p>
+                <p id="tiempo" class="texto">Tiempo total: 0 segundos</p>
+                <p id="info" class="texto"></p>
+
+            </div>
+
+        </div>
+
+        <div id="simulacion">
+
+            <canvas id="canvas" width="798" height="440"></canvas>
 
         </div>
 
     </div>
-
-    <div id="simulacion">
-
-        <canvas id="canvas" width="798" height="440"></canvas>
-
-    </div>
-
-</div>
 
 </body>
 
